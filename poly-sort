@@ -1,0 +1,79 @@
+//#filter function
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int c;
+	int e;
+	struct node* next;
+}*starta=NULL,*startb=NULL,*starts=NULL,*cura=NULL,*curb=NULL,*curs=NULL,*new_node,*temp=NULL,*ptr;
+int main(){
+	int i,j,n,count1;
+	count1=0;
+	printf("enter the number of terms :");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		new_node=(struct node*)malloc(sizeof(struct node));
+		printf("enter the coefficient :");
+		scanf("%d",&new_node->c);
+		printf("enter the exponent :");
+		scanf("%d",&new_node->e);
+		new_node->next=NULL;
+		count1++;
+		if(starta==NULL){
+			starta=new_node;
+			cura=new_node;
+		}
+		else{
+			cura->next=new_node;
+			cura=new_node;
+		}
+	}
+	
+	//testing...
+	cura=starta;
+	while(cura!=NULL){
+		printf("%d(X^%d)",cura->c,cura->e);
+		cura=cura->next;
+	
+	}
+	int tempe,tempc;
+
+	
+	printf("\n%d",count1);
+	for(i=0;i<count1;i++){
+		cura=starta;
+		do{
+			printf("in while\n");
+			
+			if(cura->next!=NULL){
+				printf("in primary\n");
+				if((cura->next)->e>cura->e){
+					tempe=cura->e;
+					tempc=cura->c;
+					cura->c=(cura->next)->c;
+					cura->e=(cura->next)->e;
+					(cura->next)->e=tempe;
+					(cura->next)->c=tempc;
+					printf("in if\n");
+				}
+				else{
+					cura=cura->next;
+					printf("in else\n");
+				}
+			}
+		}while(cura->next!=NULL);
+		cura=starta;
+		printf("sorted polinomial is...")
+		while(cura!=NULL){
+			printf("%d(X^%d)",cura->c,cura->e);
+			cura=cura->next;
+		}
+	}
+	
+	
+	}
+	
+	
+	
+	
+	
